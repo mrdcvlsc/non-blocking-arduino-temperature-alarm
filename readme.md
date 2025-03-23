@@ -22,5 +22,5 @@ One of the LED will always blink to indicate that the alarm is on,
 a user can then press the button to toggle the alarm off/on, if the
 alarm is off, there would be no blinking.
 
-If the temperature drops below the minimum celsius or exceeds the
-maximum celsius, the buzzer will beep to alert the user.
+If the alarm is on and the temperature drops below the minimum celsius
+or exceeds the maximum celsius, the buzzer will beep to alert the user.

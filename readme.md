@@ -20,7 +20,7 @@ arduino always responsive.
 
 One of the LED will always blink to indicate that the alarm is on,
 a user can then press the button to toggle the alarm off/on, if the
-alarm is of, there would be no blinking.
+alarm is off, there would be no blinking.
 
 If the temperature drop to the min celcsius or exceed the max celcsius,
 the buzzer will beep to alert the user.

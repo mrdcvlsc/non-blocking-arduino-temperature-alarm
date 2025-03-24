@@ -2,25 +2,27 @@
 #include <DHT.h>
 
 // DHT dht(/* PIN: */ 13, DHT11);
-DHT dht(/* PIN: */ 13, DHT22); // DHT22 is way more accurate
+DHT dht(/* PIN: */ 13, DHT22);  // DHT22 is way more accurate
 
 int PIN_BUZZER = 2;
-int PIN_BTN_ALARM_TOGGLER = 4; // button for alarm on and off
-int PIN_LED_STATE_BTN = 7;    // lights up if button is working
-int PIN_LED_STATE_ALARM = 8;  // lights up when alarm is on
+int PIN_BTN_ALARM_TOGGLER = 4;  // button for alarm on and off
+int PIN_LED_STATE_BTN = 7;      // lights up if button is working
+int PIN_LED_STATE_ALARM = 8;    // lights up when alarm is on
 
 bool is_alarm_on = true;
 bool is_buzz = false;
 
 bool alarm_led_state = false;
 unsigned long t_alarm_led_last_blink = 0;
-const long t_alarm_led_blink_interval = 1500; // 1.5 sec
+const long t_alarm_led_blink_interval = 1500;  // 1.5 sec
 
 unsigned long t_last_temperature_measure_time = 0;
-const long t_temperature_measure_interval = 5000; // 5 sec
+const long t_temperature_measure_interval = 5000;  // 5 sec
 float last_temperature = 30.0f;
-float min_celsius = 25.75f;
-float max_celsius = 33.0f;
+float min_celsius = 24.0f;
+float max_celsius = 35.0f;
+float min_humidity = 40.0f;
+float max_humidity = 90.0f;
 
 int last_btn_alarm_toggler_state = LOW;
 int btn_alarm_toggler_state = LOW;
@@ -93,7 +95,7 @@ void loop() {
     Serial.print("temperature:");
     Serial.println(celcius);
 
-    if (celcius < min_celsius || celcius > max_celsius) {
+    if (celcius < min_celsius || celcius > max_celsius || humidity < min_humidity || humidity > max_humidity) {
       is_buzz = true;
     } else {
       is_buzz = false;

@@ -71,16 +71,14 @@ void loop() {
 
   if (btn_toggler_state == HIGH) {
     digitalWrite(PIN_LED_STATE_BTN, HIGH);
-    digitalWrite(PIN_BUZZER, HIGH);
   } else {
     digitalWrite(PIN_LED_STATE_BTN, LOW);
-    digitalWrite(PIN_BUZZER, LOW);
   }
 
   if (is_buzz && is_alarm_on) {
-    digitalWrite(PIN_BUZZER, HIGH);
+    tone(PIN_BUZZER, 400);
   } else {
-    digitalWrite(PIN_BUZZER, LOW);
+    noTone(PIN_BUZZER);
   }
 
   if (current_time - t_last_temperature_measure_time >= t_temperature_measure_interval && is_alarm_on) {
